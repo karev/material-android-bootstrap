@@ -8,6 +8,7 @@ import com.codetroopers.materialAndroidBootstrap.core.ForApplication;
 import com.codetroopers.materialAndroidBootstrap.core.RobotiumMockingTest;
 import com.codetroopers.materialAndroidBootstrap.core.TestRootModule;
 import com.codetroopers.materialAndroidBootstrap.example.DummyContentFactory;
+import com.codetroopers.materialAndroidBootstrap.example.DummyObject;
 import com.robotium.solo.Solo;
 
 import java.sql.SQLException;
@@ -48,7 +49,7 @@ public class HomeActivityTest extends RobotiumMockingTest<HomeActivity> {
     }
 
     public void testHomeActivity_example() throws SQLException {
-        when(mockDummyContentFactory.getDummyContent()).thenReturn("Hello World from test!");
+        when(mockDummyContentFactory.getDummyContent()).thenReturn(new DummyObject("Hello World from test!"));
 
         final Solo solo = startActivity();
         solo.assertCurrentActivity("Current activity must be HomeActivity", HomeActivity.class, true);

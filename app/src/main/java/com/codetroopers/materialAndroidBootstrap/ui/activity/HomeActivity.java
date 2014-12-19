@@ -56,7 +56,7 @@ public class HomeActivity extends BaseActionBarActivity implements DrawerAdapter
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putBoolean("DUMMY_CONTENT_LOADED", true);
+        outState.putBoolean("DUMMY_CONTENT_LOADED", dummyObject != null);
         super.onSaveInstanceState(outState);
     }
 
