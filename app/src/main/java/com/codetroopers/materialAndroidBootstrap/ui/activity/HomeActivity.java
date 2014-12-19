@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.codetroopers.materialAndroidBootstrap.R;
 import com.codetroopers.materialAndroidBootstrap.example.DummyContentFactory;
+import com.codetroopers.materialAndroidBootstrap.example.DummyObject;
 import com.codetroopers.materialAndroidBootstrap.ui.activity.core.BaseActionBarActivity;
 
 import javax.inject.Inject;
@@ -34,13 +35,29 @@ public class HomeActivity extends BaseActionBarActivity implements DrawerAdapter
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerAdapter mAdapter;
 
+    private DummyObject dummyObject = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setupDrawer(savedInstanceState);
 
-        tvContent.setText(dummyContentFactory.getDummyContent());
+        if (savedInstanceState == null || !savedInstanceState.getBoolean("DUMMY_CONTENT_LOADED", false)) {
+            dummyObject = dummyContentFactory.getDummyContent();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        tvContent.setText(dummyObject.toString());
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("DUMMY_CONTENT_LOADED", true);
+        super.onSaveInstanceState(outState);
     }
 
     private void setupDrawer(Bundle savedInstanceState) {

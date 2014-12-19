@@ -16,7 +16,7 @@ public class DummyContentFactory {
         this.context = context;
     }
 
-    public String getDummyContent() {
-        return context.getString(R.string.hello_world);
+    public DummyObject getDummyContent() {
+        return new DummyObject(context.getString(R.string.hello_world));
     }
 }
