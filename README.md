@@ -8,6 +8,7 @@ This bootstrap contains :
 * new toolbar implementation
 * a drawer who respect the material guidelines (only on API21)
 * Dagger
+* Crashlytics
 
 ## Thanks
 
